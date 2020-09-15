@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id="day"></h3>
+	<h1>一、javascript能做什么</h1>
+	<p id='nihao'>javascript改变样式</p>
+	<button type='button' 
+	onclick="document.getElementById('nihao').style.fontSize='35px'">字体</button>
+
+	<button type='button'
+	onclick="document.getElementById('nihao').style.display='none'">隐藏</button> 
+
+	<button type='button'
+	onclick="document.getElementById('nihao').style.display='block'">显示</button> 
+
+
+<!用警告框添加显示内容window.alert(5+7)>
+	
+<!使用 console.log()显示数据>
+	<p>在F12运行，选择 "Console"</p>
+	<script>console.log(5+11)</script>
+
+<!function 中{}可以定义一同执行的语句>
+	
+	<button type='button'
+	onclick="document.getElementById('demo1').innerHTML='z的结果为'+myfunction()">执行函数</button> 
+	<p id="demo"></p>
+	<p id="demo1"></p>
+	<p id="demo2"></p>
+	
+	<script>//试验变量在函数中的应用
+		
+		function myfunction() {
+			var x,y;
+			x=4;
+			y=5;
+			z=x+y;
+			return z
+		
+	}
+	document.getElementById('demo2').innerHTML="js就是这么简单"+myfunction();	
+	</script>
+	
+
+
+	<script>
+	//计算温度的选择
+	function toCelsius(f) {
+    	return (5/9) * (f-32);
+}
+	document.getElementById("demo").innerHTML = toCelsius(86);
+	</script>
+
+	<h1 id='oo'>二、改变自身便签内容</h1>
+	<button onclick="this.innerHTML=Date()">时间是</button>
+	<button onmouseover="this.innerHTML=Date()">时间onmouseover是</button>
+	<button onmouseout="this.innerHTML=Date()">时间onmouseout是</button>
+	<button onkeydown="this.innerHTML=Date()">时间onkeydown是</button>
+
+	<h2>字符串的常用方法</h2>
+	<p id="100">返回字符串长度：</p>
+	<p id="ooo"></p>
+	<p id="1000">indexOf查找字符串索引:(从0开始第一个索引)</p>
+	<p id="oooo"></p>
+	<p id="10000">提取字符串slice(起始索引到结束索引)：</p>
+	<p id="ooooo"></p>
+	<p id="100000">提取字符串substr()(起始位置+提取的后面几位)：</p>
+	<p id="oooooo"></p>
+	<p>replace替换字符串指定值：</p>
+	<p id="ooooooo"></p>
+
+	<script>
+		var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		document.getElementById("ooo").innerHTML = txt.length;
+		document.getElementById("oooo").innerHTML = txt.indexOf("C");
+		document.getElementById("ooooo").innerHTML = txt.slice(7,15);
+		document.getElementById("oooooo").innerHTML = txt.substr(7,8);
+		document.getElementById("ooooooo").innerHTML = txt.replace("A","a");
+	</script>
+
+
+	<p>输入您的年龄然后点击这个按钮：</p>
+	<input id="age" value="18" />
+
+	<button onclick="myFunction()">试一试</button>
+
+	<p id="demoo"></p>
+	<script>
+	function myFunction() {
+  		var age, voteable;
+  		age = Number(document.getElementById("age").value);//number确保输入的是数字
+  		if (isNaN(age)) {
+  			voteable = "输入值不是数字";
+  		}else{
+  			voteable = (age < 18)? "好年轻":"够成熟";
+  		}
+  		document.getElementById("demoo").innerHTML = voteable;
+	}
+	</script>
+	<h1 id="444">三 循环语句</p>
+	<script>
+		var day;
+		switch(new Date().getDay()){//getdata以数字方式返回星期
+			case 0:
+				day="周日"
+				break
+			case 1:
+    			day = "周一";
+    			break;
+  			case 2:
+    			day = "周二";
+    			break;
+  			case 3:
+    			day = "周三";
+    			break;
+  			case 4:
+    			day = "周四";
+    			break;
+  			case 5:
+    			day = "周五";
+    			break;
+  			case  6:
+    			day = "周六";
+
+		}
+		document.getElementById("day").innerHTML="今天是"+day
+
+	</script>
+
+	
+
+	<p id="qwer"></p>
+	<script>
+	var text = "";
+	var i;
+	for (i = 0; i < 5; i++) {//注意必须要用分号
+  		text += "The number is " + i + "<br>";
+	}
+		document.getElementById("qwer").innerHTML = text;
+	</script>
+
+	<h1 id='zhengze'>四、正则表达式</h3>
+	<button onclick="myFunction()">正则表达式：试一试</button>
+	<p id="ddddd">
+	<script>
+		function myFunction(){//(red|green)/g)含义是匹配任意|两边的值，或的意思（同时还有[abc]查到括号内任意字符，[0-9]查找数字0-9），g代表全局匹配 i代表大小写不敏感 m代表多行匹配
+			var str="re, green, red, green, gren, gr, blue, yellow"
+			var patt1=/(red|green)/g
+			var result=str.match(patt1)
+			document.getElementById("ddddd").innerHTML = result;
+		}
+	</script>
+
+	<button onclick="myFunction()">正则表达式：test()and exec()</button>
+	<p id="dddddd"></p>
+	<p id="ddddddd"></p>
+	<p id="demo">检索下列段落中的e,test()输出True或者false,exec()输出结果，未找到返回null</p>
+	<p id="p01">The best things in life are free!</p>
+	<script>
+		text=document.getElementById("p01").innerHTML; 
+		document.getElementById("dddddd").innerHTML=/e/.test(text);
+		document.getElementById("ddddddd").innerHTML=/e/.exec(text);
+	</script>
+	<h1>五、HTML错误处理</h1>
+
+	<input id="ttt" type="text">
+	<button type="button" onclick="myFc()">检测输入</button>
+	<p id="pp"></p>
+	<script>
+		function myFc(){
+			var message, x;
+			message = document.getElementById("pp");
+			// message.innerHTML = "";
+			x = document.getElementById("ttt").value;
+			try{
+				if(x == "")  throw "是空的";
+				if(isNaN(x)) throw "不是数字";
+				// x = Number(x);
+				if(x < 5)  throw "太小";
+				if(x > 10)   throw "太大";
+			}
+			catch(err) {
+				message.innerHTML = "输入：" + err;
+			}
+		}
+	</script>
+
+	<h1>六、表单</h1>
+	<script>
+		function validateForm(){
+			var x=document.forms["myForm"]["fname"].value;
+			if(x==null|x==""){
+				alert("需要输入名字")
+				return false
+			}
+		}
+
+
+	</script>
+
+<body>
+
+		<form name="myForm" action="demo_form.php" onsubmit="return validateForm()" method="post">
+		名字：<input type="text" name="fname">
+		<input type="submit" value="提交">
+		
+
+		</form>
+
+
+
+</body>
+
+
+<p>请输入 1 到 10 之间的数字：</p>
+<input id="numb">
+<button type="button" onclick="myFunc()">提交</button>
+<p id="fff"></p>
+<script>
+	function myFunc(){
+		var x,text;
+		x=document.getElementById("numb").value;
+		//如果输入的值x不是数字或者小于1或者大10，提示错误
+		if (isNaN(x)|x<1|x>10){
+			text="输入错误"
+
+		}else{
+			text="输入正确"
+		}document.getElementById("fff").innerHTML=text;
+	}
+//全局函数自动成为 window 方法。调用 myFunction() 与调用 window.myFunction() 相同。如果要调用全局函数就使用window方法调用
+
+
+</script>
+<h1>七、改变页面元素DOM</h1>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+
+<p id="p1">Hello World!</p>
+<p id="p2">Hello World!</p>
+
+<p id="id11">点击改变元素样式</h1>
+<script>
+document.getElementById("p2").style.color="red";
+document.getElementById("p2").style.fontFamily="Arial";
+document.getElementById("p2").style.fontSize="larger";
+
+</script>
+<button type="button" onclick="document.getElementById('id11').style.color='red'">
+点我!</button>
+<button type="button" onclick="document.getElementById('id11').style.visibility='hidden'">
+隐藏</button>
+<p>
+<button type="button" onclick="document.getElementById('id11').style.visibility='visible'">
+显示</button>
+</p>
+
+<p>对用户事件做出反应</p>
+<p onclick="this.innerHTML='Ooops!'">点击文本!</p>
+<p>也可以直接放在一个函数中</p>
+
+<script>
+	function changetext(id){
+		id.innerHTML="Oooops"
+	}
+
+</script>
+<p onclick="changetext(this)">点击文本!</p>
+
+<script>
+function myFunction(){
+	var x=document.getElementById("fname");
+	x.value=x.value.toUpperCase();
+}
+</script>
+</head>
+<body>
+
+输入你的名字: <input type="text" id="fname" onchange="myFunction()">
+<p>当你离开输入框后，函数将被触发，将小写字母转为大写字母。</p>
+
+<div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:#D94A38;width:120px;height:20px;padding:40px;">Mouse Over Me</div>
+<script>
+function mOver(obj){
+	obj.innerHTML="Thank You"
+}
+function mOut(obj){
+	obj.innerHTML="Mouse Over Me"
+}
+</script>
+
+
+<p>该实例使用 addEventListener() 方法在按钮中添加点击事件。 </p>
+<button id="myBtn">点我</button>
+<p id="ddddddmmm"></p>
+<script>
+document.getElementById("myBtn").addEventListener("click", displayDate);
+function displayDate() {
+    document.getElementById("ddddddmmm").innerHTML = Date();
+}
+</script>
+
+<p>该实例使用 addEventListener() 方法在按钮中添加点击事件直接添加函数。 </p>
+<button id="myBtn">点我</button>
+<script>
+document.getElementById("myBtn").addEventListener("click", function(){
+    alert("Hello World!");
+});
+</script>
+
+<p>该实例使用 addEventListener() 方法向同个按钮中添加两个点击事件。</p>
+<button id="myBtn">点我</button>
+<script>
+var x = document.getElementById("myBtn");
+x.addEventListener("click", myFunction);
+x.addEventListener("click", someOtherFunction);
+function myFunction() {
+    alert ("Hello World!")
+}
+function someOtherFunction() {
+    alert ("函数已执行!")
+}
+</script>
+<p style="color:red;">添加一行新的元素节点</p>
+<p style="color:blue;">删除某个节点的子节点</p>
+<p style="color:yellow;">删除某个节点的子节点</p>
+
+
+<div id="div1">
+<p id="p1">这是一个段落。</p>
+<p id="p2">这是另外一个段落。</p>
+</div>
+ 
+<script>
+var para = document.createElement("p");
+var node = document.createTextNode("这是一个新的段落。");
+para.appendChild(node);
+ 
+var element = document.getElementById("div1");
+element.appendChild(para);
+
+var parent= document.getElementById("div1");
+var chile=document.getElementById("p2");
+
+parent.removeChild(child);
+var parent = document.getElementById("div1");
+var child = document.getElementById("p1");
+parent.replaceChild(para, child);
+
+</script>
+
+<p>获取文档所有的 p 元素：var myCollection = document.getElementsByTagName("p");</p>
+
+<p>Hello World!</p>
+
+<p>Hello Runoob!</p>
+
+<p id="demooooooo"></p>
+
+<script>
+var myCollection = document.getElementsByTagName("p");
+document.getElementById("demooooooo").innerHTML = "第二个段落的内容为:<span style='color:red;'> " + myCollection[1].innerHTML + '</span>';
+</script>
+
+<p>点击按钮修改 p 元素的背景颜色。</p>
+
+<button onclick="myFunction()">点我</button>
+
+<script>
+function myFunction() {
+    var myCollection = document.getElementsByTagName("p");
+    var i;
+    for (i = 0; i < myCollection.length; i++) {
+        myCollection[i].style.color = "palegoldenrod ";
+        myCollection[i].style.fontSize="45px";
+    }
+}
+</script>
+<p>NodeList 返回标签列表，加上lengeth显示个数HTMLCollection 与 NodeList 的区别HTMLCollection 元素可以通过 name，id 或索引来获取。
+
+NodeList 只能通过索引来获取。</p>
+<p>Hello World!</p>
+
+<p>Hello Runoob!</p>
+
+<p id="demo"></p>
+
+<script>
+var myNodelist = document.querySelectorAll("p");
+document.getElementById("demo").innerHTML = "文档包含 " + myNodelist.length + " 个段落。";
+</script>
+
+<p>窗口大小</p>
+<p id="nihaoa"></p>
+
+<script>
+var w = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+var h = window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
+
+var x = document.getElementById("nihaoa");
+x.innerHTML = "浏览器内窗宽度：" + w + "，高度：" + h + "。";
+</script>
+
+<!-- window.open() - 打开新窗口
+window.close() - 关闭当前窗口
+window.moveTo() -移动当前窗口
+window.resizeTo() -重新调整当前窗 -->口
+
+<!-- 返回以像素计的访问者屏幕长宽高
+screen.width
+screen.height
+screen.availWidth可用宽度，例如减去了进度条
+screen.availHeight可用宽度，例如减去了进度条
+screen.colorDepth
+screen.pixelDepth -->
+
+<!-- window.location.href 返回当前页面的 href (URL)
+window.location.hostname 返回 web 主机的域名
+window.location.pathname 返回当前页面的路径或文件名
+window.location.protocol 返回使用的 web 协议（http: 或 https:）
+window.location.assign 加载新文档 -->
+<!-- Window History
+window.history 对象可不带 window 书写。
+
+为了保护用户的隐私，JavaScript 访问此对象存在限制。
+
+一些方法：
+history.back() - 等同于在浏览器点击后退按钮
+history.forward() - 等同于在浏览器中点击前进按钮 -->
+
+
+<script>
+function goForward() {
+    window.history.forward()
+ }
+</script>
+</head>
+<body>
+
+<input type="button" value="Forward" onclick="goForward()">
+
+
+
+<button onclick="myFunction()">试一试</button>
+
+<p id="www"></p>
+
+<script>
+function myFunction() {
+  var txt;
+  var person = prompt("请输入您的名字：", "哈利波特");
+  if (person == null || person == "") {
+    txt = "用户取消输入";
+  } else {
+    txt = "你好，" + person + "！今天过得好吗？";
+  }
+  document.getElementById("www").innerHTML = txt;
+}
+</script>
+
+
+<h1>cooki案例</h1>
+<script>
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  var user=getCookie("username");
+  if (user != "") {
+    alert("再次欢迎您，" + user);
+  } else {
+     user = prompt("请输入姓名：","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+  }
+}
+</script>
+</head>
+
+<body onload="checkCookie()"></body>
+
+
+<h1>ajax</h1>
+<!-- 不刷新页面更新网页
+在页面加载后从服务器请求数据
+在页面加载后从服务器接收数据
+在后台向服务器发送数据
+ -->
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
