@@ -68,7 +68,9 @@ async def main(username,pwd,url):
 	await page.type('#q','pingguo',{'delay': input_time_random()-30})#有个bug在于如何清除搜索框内的原本内容
 	await page.keyboard.press('Enter')
 	await asyncio.sleep(3)
-
+	#pypeteer的页面依然停留在原来的页面，可以通过以下访问新的页面
+	 #pages = await browser.pages()
+	 #page = pages[-1]
 	await page.content()
 	#link=await page.xpath(r"//*[@id='mainsrp-itemlist']/div/div/div[1]//div/div[2]/div[2]/a/@href")
 							# //*[@id="mainsrp-itemlist"]/div/div/div[1]/div[1]/div[2]/div[2]/
