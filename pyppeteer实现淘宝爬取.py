@@ -122,8 +122,13 @@ async def main(username,pwd,url):
     #     link = await (await item.getProperty("href")).jsonValue()
     #     print(title)   
     #     print(link)
-
-
+        # 获取表格文本        
+        # 获取文本：方法一，通过getProperty方法获取
+        # title_str1 = await (await item.getProperty('textContent')).jsonValue()
+        # 获取文本：方法二，通过evaluate方法获取
+        # title_str2 = await page.evaluate('item => item.textContent', item)
+        # 获取链接：通过getProperty方法获取
+        # title_link = await (await item.getProperty('href')).jsonValue()
 
     	#清洗出 详情页标签
 		a1=await page.xpath(r'//*[@id="J_DetailMeta"]/div[1]/div[1]/div/div[1]/h1/a')#清洗出a标签，这一步的标签为空
@@ -241,7 +246,7 @@ def input_time_random():
 
 if __name__ == '__main__':
 	username='15121001990'
-	pwd = 'wb962422' #密码
+	pwd = '525245' #密码
 	url='https://login.taobao.com/member/login.jhtml?redirectURL=http%3A%2F%2Fs.taobao.com%2Fsearch%3Fq%3Diphone%26imgfile%3D%26commend%3Dall%26ssid%3Ds5-e%26search_type%3Ditem%26sourceId%3Dtb.index%26spm%3Da21bo.2017.201856-taobao-item.1%26ie%3Dutf8%26initiative_id%3Dtbindexz_20170306&uuid=9b631e2152cdd7be53cdd829a9c84a3e'
 	loop = asyncio.get_event_loop()  #协程，开启个无限循环的程序流程，把一些函数注册到事件循环上。当满足事件发生的时候，调用相应的协程函数。
 
