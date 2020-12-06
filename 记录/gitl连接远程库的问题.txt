@@ -1,0 +1,18 @@
+error: failed to push some refs to 'https://github.com/bluetata/
+原因：	远程库与本地库不一致造成的，在hint中也有提示把远程库同步到本地库就可以了
+解决办法：使用命令行：
+git pull --rebase origin master
+
+–-rebase的作用是取消掉本地库中刚刚的commit，并把他们接到更新后的版本库之中
+
+
+nothing added to commit but untracked files present（在给仓库提交文件时可能会出现还有未提交的文件存在而无法提交的情况）
+解决方法：
+未提交但不需要的文件添加到git忽略文件 .gitignore
+vim .gitignore
+追加如下内容（根据自己的提示添加）
+/target/ 
+zblog.iml
+将这些文件或文件夹add进去
+git add /target/.
+git add zblog.iml

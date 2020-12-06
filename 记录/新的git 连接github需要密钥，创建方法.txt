@@ -1,0 +1,5 @@
+ssh-keygen -t rsa -C "youremail@example.com" 
+之后就一路空格就行
+
+第二步找到文件/c/Users/wb/.ssh/id_rsa)
+
