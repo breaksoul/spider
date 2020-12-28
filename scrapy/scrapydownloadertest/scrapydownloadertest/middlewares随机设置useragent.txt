@@ -1,0 +1,31 @@
+修改请求时的 User-Agent 可以有两种方式：一是修改 settings 里面的 USER_AGENT 变量；二是通过 Downloader Middleware 的 process_request () 方法来修改。 第一种方法非常简单，我们只需要在 setting.py 里面加一行 USER_AGENT 的定义即可：
+
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
+一般推荐使用此方法来设置。但是如果想设置得更灵活，比如设置随机的 User-Agent，那就需要借助 Downloader Middleware 了。
+middleware方法
+先添加一个random类
+
+class RandomUserAgentMiddleware():
+    def __init__(self):
+        self.user_agents=['Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)',
+            'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2',
+            'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1'
+        ]
+
+    def process_request(self,request,spider):
+        request.headers['User-Agent']= random.choice(self.user_agents)
+
+
+之后需要在setting中注释DOWNLOADER_MIDDLEWARES ，在里面后面添加上类名
+scrapydownloadertest.middlewares.RandomUserAgentMiddleware': 543
+
+Downloader 对 Request 执行下载之后会得到 Response，随后 Scrapy 引擎会将 Response 发送回 Spider 进行处理。但是在 Response 被发送给 Spider 之前，
+我们同样可以使用 process_response () 方法对 Response 进行处理。
+比如这里修改一下 Response 的状态码，在 RandomUserAgentMiddleware 添加如下代码：
+def process_response(self, request, response, spider):
+    response.status = 201
+    return response
+
+我们将 response 对象的 status 属性修改为 201，随后将 response 返回，这个被修改后的 Response 就会被发送到 Spider。
+self.logger.debug('Status Code: ' + str(response.status))
+

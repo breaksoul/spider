@@ -1,0 +1,4 @@
+问题“自己写的quotes文件 运行会报错StopIteration”，替换为网络的文件之后 没有报错
+
+正在比对两个文件的差异处
+quotes 文件通过直接替换为原来的文件依然发生StopIteration
